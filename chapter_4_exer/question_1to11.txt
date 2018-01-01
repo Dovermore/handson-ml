@@ -1,0 +1,47 @@
+1.
+    Using normal form will be slow as f. Thus the better choice will be batch gradient descent which performs well on large feature sets but bad on large data sets
+
+2.
+    Gradient descent.
+    Why: The shape of cost function (which normally is convex) will be stretched along some axis, resulting in slower descent in the stretched direction
+    WhatToDo: Standarize the input (offset mean then variance). Normally with sklearn.preprocessing standardscaler
+  
+3.
+    No, cost function for logistic regression is convex, meaning it has no local minimum
+  
+4.
+    No, not with assist of other method. Especially stochastic gradient descent. It will wander around the global minimum but never converge. However, with the help of simulated annealing.
+  
+5.
+    Overfitting Or too much learning rate causing diverge of result
+    Fix this by using normalization skill:
+        Lasso l1, Ridge l2, Early stopping, ElasticNet a*l1 + (1-a)*l2
+
+6.
+    No, mini-batch has randomness when training, it will occasionally go up, even when it hasn't reached global minimum. The correct way will be after it bounces up for long enough time, one can confirm that's the global minimum
+
+7.
+    Mini-batch? stochastic gd
+    Batch,
+    simulated annealing
+
+8.
+    Overfitting
+    Regularization method
+    Or reducing input dimension to give fewer level of freedom
+
+9.
+    High bias,
+    reduce it due to bias variance trad-off
+
+10.
+    `To reduce overfitting, while preserving more attributes
+    `There are lots of seemingly useless attributes and want to reduce the matrix to more sparse matrix
+    `Want both effect?
+
+11.
+    Two logistic regression,
+    this is multilabel problem, however it's also a multioutput problem, thus softmax cant output all outputs.
+
+12.
+    In other notebook
