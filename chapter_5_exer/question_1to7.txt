@@ -1,0 +1,22 @@
+1.
+    SVC: Not only separate different class of instances but also try to keep the separation as far away as possible from the margin of both classes with support vectors
+    SVR: Fit the line through data sets and keep as much instances inside the margin as possible
+    
+2.
+    The points on the margin that determines where margin is
+    possibly also the points that violates margin.
+    
+3.
+    SVMs are sensitive to scales. Scale the inputs can significantly impove the performance by widen the street.
+    If the instance is not scaled the vector tend to neglect small features!!!!
+    
+4.
+    No, it only output the result.
+    Neither
+
+5.
+    Primal.
+    Dual is when training instance is more than training features
+
+6.
+    Should try increase both gamma and C to reduce the regularization effect and get more complex fitted model
