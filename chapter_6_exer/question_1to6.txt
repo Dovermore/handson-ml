@@ -1,0 +1,21 @@
+1.
+    log(N+1)-1
+
+2.
+    Lower.
+    Always.
+    cuz weight left * gini left + weight right * gini right
+
+3.
+    Yes.
+    Reduce max_* or incrase min_* will have regularization effect on the model
+
+4.
+    No. Decision tree is insensitive to feature scales
+    
+5.
+    Training time is porpotion to nmlog(m).
+    So the time is roughly 11.667hrs
+    
+6.
+    It only speeds up small set of data. So no.
