@@ -1,0 +1,24 @@
+1.
+    You can at least try. Normally combining different classifiers will give better result than the best classifier in the set. However, for maximum efficiency. The best way to combine classifier is to use different training set to train the classifier. Same training set also works when the classifiers are different but not as good as trained on different sets
+
+2.
+    Hard voting classifiers using the result of classifier and use the mode of results for voting. While soft voting classifiers using the *.predict_proba_ and aggregate the result of all classifiers and use the final result probability to determine the class
+    
+3.
+    It is possible. Since bagging/Pasting can be done using parallel computing, to distribute to multiple core/GPU/Servers
+    However, boosting ensembles can only be done parallely partially, since it's a sequential ensemble learning algorithm.
+    Random forest is type of bagging, so it can be done.
+    Stacking can be done partially, only for each layer. But different layers are type of sequential learning, same reason as boosting ensembles.
+    
+4.
+    It allows people to evaluate bagging algorithm without the need of an extra validation set. Since the OOB part of training data, though are used across the ensemble by some models. For one particular model, the oob training sets has never been seen by that model. meaning it can be used to cross validate that predictor. Thus, by averaging all predictions done on all the oob sets.
+    
+5.
+    Extra tree, by not only selecting the feature/instance randomly. But also randomly select the best split point for the features. Making it extra random. The Extra trees speed the regular random forest since the searching for optimum split point is the most time consuming part of the algorithm
+    
+6.
+    Learning rate. Increase the learning_rate parameter updates the weight more and give more weight to better fitted predictors. Making the model more complex.
+    
+7.
+    Lower the learning rate: This will cause each predictor have less effect thus reduce the overfitting problem
+    Reduce the depth of predictors(reduce the number of predictors): This will reduce the generation of complex model by latter predictors.
