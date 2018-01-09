@@ -1,0 +1,37 @@
+1.
+    Large dimension behaves differently than lower dimensions. Such as the training set will become sparse in huge dimension spaces. This will cause negative effect on training model, such as overfit. Also, more dimension meaning more training time and easier to overfit the training data since it also offers more degrees of freedom.
+    Also, one reason to reduce dimension is to visualize the set for human visualization. By eyeballing the data, some pattern can be found by human eyes, which will help improve the model.
+    
+    The main draw back in model training perspective will be since the training set lost some information (variances), the bias of model will likely increase.
+
+2.
+    As said in question 1, the data will become sparse and there is much likely to be more edge cases. Also, the training time scales way too much for computer to handle. And since there are lots more space for algorithm to fit, Overfitting is much more likely to happen since the exploration space is much larger. Or to save space.
+    The super sparse distribution of data makes it hard to get dense enough data to train.(more than atoms in universe in some extreme cases)
+    
+3.
+    It's not possible to revert it fully back to original data (except for the case that the original data has a complete useless axis, whose variance is zero). But it's possible to partially revert the data to original data.
+    sklearn, PCA: By using the inverse_transform function with pca classes one can get an a reconstructed data from the projected data.
+    sklearn, kPCA: By training a regression model to fit the data back to the original feature number. This won't be totally accurate either.
+    sklearn, LLE dont know, lol
+
+4.
+    Maybe kernelized PCA can do so, by mapping the feature to infinite space then perform feature selection.
+    
+    corr:It can be used to unroll most complex data, ie. to get rid of useless dimensions. But data like swiss row can't be conpressed using PCA. But you need to unroll it to get the data.
+    
+5.
+    Depends on the dataset. Might be ranging from 1 to 950
+    
+6.
+    Vanilla PCA: When datasets can fit into memory, and the number of feature is relative small. And the selected feature to all feature ratio is relatively big.
+    Incremental PCA: use only when the datasets can't fit into memory using partial_fit function, but can be replaced by the memmap and fit. And also online tasks need incremental PCA for continously learning.(On the fly)
+    Randomized PCA: when there are large amount of features originally which makes the original PCA slower. When performing reduction that uses very little reult feature space.
+    Kernel PCA: useful for non-Linear datasets
+    
+7.
+    The first way is just to train the model and see which reduction algorithm does better using tools like gridsearchcv or randomizedsearchcv etc. Or else, you can also measure it by the reconstruction error by mapping the training data back using inverse function. Calculate and select the one with least reconstruction error.
+    
+8.
+    Might be, may be the reduction by one alrorithm isn't enough and other algorithm can do much better on the new reductin algorithm.
+    
+    corr: It will make sense in some cases. Eg: using very slow LLE to reduce large datasets can be very slow. However if using PCA to reduce the dataset first before applying LLE. The LLE can be completed in much faster fashion while still perform well in the task.

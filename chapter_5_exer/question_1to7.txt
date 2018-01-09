@@ -13,10 +13,19 @@
 4.
     No, it only output the result.
     Neither
+    
+    correct:
+        It can always output confidence score by outputing the distance from center line or distance within streets
+        Only able to produce possibility score by setting the probability parameter to True, then it can output probability. But the linear SVC SVR dont have such option. Only kernalized SVC can.
 
 5.
     Primal.
     Dual is when training instance is more than training features
 
 6.
-    Should try increase both gamma and C to reduce the regularization effect and get more complex fitted model
+    Should try increase both gamma and C to reduce the regularization effect and get more complex fitted model.
+    
+7.
+    See the anser book
+
+    
