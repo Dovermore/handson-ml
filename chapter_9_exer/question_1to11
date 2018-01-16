@@ -1,0 +1,43 @@
+1.
+    Benefit:
+        ez compute gradient, ez distribute across server, ez managing code
+    drawback:
+        hard debugging, hard learning
+
+2.
+    No. Run is for operator, and eval is for variable. After running an operation the variable might still not evalueated.
+    
+    
+    ans: Yes, it's equivalent
+
+3.
+    Yes.
+    
+    ans: no, the first expression run the evaluation process twice, thus slower. Moreover, if any of the process of a.eval(session=sess) modified(assigned) variable, b.eval(session=sess) won't give the same answer.
+    
+4.
+    NO, you need to merge the graph first before computing the two graphs
+    
+5.
+    In local tensorflow, it's not possible to share the variable between seesions, but in distributed tensorflow it's possiblle to share the variables in bwtween session since the variable in managed by clouds.
+    
+6.
+    When initializer is called in a session, the variable is initialized. The variable is destoryed when the session is ended.(closed)
+   
+7.
+    Variable get updated, while placeholder is just a symbolic constant.
+
+8.
+    It automatically check if the function is dependent on the placeholder, if not then the evaluation is computed. However, if the function is dependent on the placeholder, the evaluation will throw expcetion.
+
+    
+9.
+    You can feed any expression from other outcomes from any operations.
+    
+10.
+    You can only use assign operation to assign the value to a variable after initializing it.
+    
+11.
+    n_out+1 times. ie. 2 times- one to compute node value, one to compute gradient using chain rule and EXISTING Defined differentiable
+    The forward-mode auto diff need to traverse 10 times to compute all 10 variables.
+    Last, symbolic differentiation also need to traverse 10 times using dual number.

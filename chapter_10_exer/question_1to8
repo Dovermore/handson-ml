@@ -1,0 +1,43 @@
+1.
+    Blah
+    
+2.
+    Logistic Regression is differentiable and has gradient not equal to 0. While perceptron's gradient is zero all the time. Making it impossible to use gradient descent to train the model. Also percepton is more rigid, harder to twick the rate at whick the weight is changing. Since it won't output probability only produce prediction. Change the step function to sigmoid function(more generally softmax function).
+
+3.
+    Logistic regression enables researchers to use gradient descent in training. Along with autodiff enables the calculation of differentiation of nodes in different layers.
+    
+4.
+    ReLu, Sigmoid(SoftMax), Heaviside, tanh, sgn
+    
+5.
+    X: [None, 10]
+    Wh = [50, 10]
+    bh = [50,]
+    Wo = [3, 50]
+    bo = [3,]
+    Y_hat = [3, 1] or [3,]
+    Y_hat = Wo (Wh X + bh) + bo
+
+6.
+    Spam classification:
+        Output neuron: 1(logistic regression), 2(softMax regression)
+        Activation: sigmoid or softmax
+    
+    Mnist classification:
+        Output neuron: 10(softmax regression)
+        Activation: SoftMax
+    Housing price:
+        Output neuron: 10
+        Activation: None
+
+7.
+    Back propagation utlizes autodiff.
+    After the forward computation(propagation) completes. The model uses the result predicted by output layer to correct the weight in the preceding layer. Then the seconds last layers gradient is computed accrodingly.
+    
+8.
+    Number of hidden layer, nodes in hidden layers, activation function, regularization parameter, etc...
+    
+9.
+    see the other note book
+    
