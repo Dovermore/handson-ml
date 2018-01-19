@@ -1,0 +1,38 @@
+1.
+    No, the He and Xavier initializations states that all weights need to be initialized individually using the given (normal or uniform) distribution and variance. This is for the purpose of breaking symmetry of system, or else all column weights are updated with same value, and it's never able to break the symmetry. So the whole layer will act like one single nodes instead of different nodes.
+    
+2.
+    Yes. This has no influence as long as the weights(kernel) are initialized to random values. Since the back propagation will gradually make the bias have variance.
+    
+3.
+    1)
+        ELU function's derivative is not zero for x<0, makes it possible for negative output nodes to escape.
+        
+    2)
+        ELU function is smooth everywhere, makes the gradient descent less likely to bounce when touches x < 0.
+        
+    3)
+        ELU function offers output less than zero, which balances the positive outputs and make the mean of outputs closer to zero which helps solve the exploding gradient problem.
+
+4.
+    ELU: Normally use elu or SELU
+    leaky ReLu: Use leaky ReLu when need lightening fast computing algorithm.
+    ReLu: Probably Not
+    tanh: Use it only when need -1 to +1 outputs
+    Logistic: Output layer for binary classifiers
+    SoftMax: Output layer for multilabel output classifiers
+    
+5.
+    The moving momentum is accumulating less for the newly added vectors. Resulting in a momentum factor changing much slower. Make it more stable but easily to overshot and hard to change direction.
+    
+6.
+    1.
+        Using L1 regularization
+    2.
+        Using ReLu activation function (since the negative portion will be output as zero.)
+    3.
+        Use page302 training space model suggested function: Dual Averging, FTRLOptimizer
+        
+7.
+    Yes, it slows the training down significantly, cuz the model essentially have to train much more models(each combination of node).
+    But this doesn't slows down the prediction(i.e. the inference)
