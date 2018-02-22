@@ -1,0 +1,79 @@
+1.
+    1). CNN is capable of learning regional feature and can be used on data of different size.
+    2). CNN has much less parameters to tune for the model than Fully connected layers of neural network. Which makes the training much faster and using much less memory than using DNN.
+    
+    ans:
+    3). When CNN learns a feature, it can detect it anywhere on the data rather than just that spot as it did in regular network.
+    4). CNN embeds arrangement feature in the network. Since the earlier layers captures features in small area while the latter layers captures much comlicated features based on the information of earlier layers.
+    
+2.
+    Calculated on paper:
+        Parameters: (3*3+1)*(100+200+400)=7,000
+        Memory:
+            Used by input layer: 200 * 300 * 3 = 180,000 values
+                                 201 = 100 * 2 + 1 = 99 * 2 + 3 (padded)
+                                 300 = 150 * 2 + 1 = 149* 2 + 3
+
+                    hidden1 lay: 100 * 150 * 100 = 1,500,000 values
+                                 101 = 50 * + 1 = 49 * 2 + 3
+                                 151 = 74 * 2 + 3
+                    hidden2 lay: 50 * 75 * 200 = 750,000
+                    hidden3 lay: 25 * 38 * 400 = 380,000
+
+        
+        Predicting: 
+                    Memory: 1,500,000 + 750,000 = 2,250,000 values
+                            2,250,000 * 32 = 72,000,000 bits
+                                           = 9,000,000 bytes
+                    Reason: When predicting, only need to store two consective layers' parameter to make decision. Since the old layer don't need to be stored to progress.
+
+        Training with 50 instances:
+                    Memory: 50 * (180,000+1,500,000+750,000+380,000) * 32 = 4496000000 bits
+                                                                          = 562000000 bytes
+                    Reason: All the instances variables have to be stored in memory to be used for further back propagation use.
+                    
+    Sol:
+        Parameters: layer1: 3*3*3*100+100 = 2,800
+                    layer2: 3*3*100*200+200=180,200
+                    layer3: 3*3*200*400+400=720,400
+                    total:  2800 + 180,200 + 720,400 = 903,400
+                    
+                    
+        Memories:
+                There are also memory used up by the parameters:
+                    903,400 * 32 = 28,908,800 bits
+                                 = 3,613,600 bytes
+                    Predicting:
+                        9,000,000 + 3,613,600 bytes
+                    Training:
+                        562000000 + 3613600 = 565613600 bytes
+                                            = 539 MiB
+        
+                    
+3.
+    1). Try to make the data type tf.float16
+    2). Try to reduce the number of feature maps
+    3). Try use the technique of GoogLeNet of 1x1 layers reduce the dimension before feed into the large layer.
+    4). Try to reduce the depth of neural network
+    5). Try to increase the step to reduce the map size.
+    6). Try to distribute the CNN across mutiple devices.
+    7). Try to reduce the mini-batch size.
+    
+4.
+    Each pooling layer only act on one layer of the input. It's used to pool the layers to reduce the size of the layer while stripping useless informations. A pooling layer with stride 2 in both side will reduce the size of input by a factor of 4.
+    
+    ans:
+        Pooling layers has no parameters at all, while regular convolutional layers has a lot.
+    
+5.
+    When you want to increase the variaty of layers. The local response normalization layer can be used to scale down the feature in other layers if the neuron in one of the layer strongly activated.
+    
+    ans:
+        Typically used in lower layers to encourage them have different variety of features that can help upper layers to learn well.
+    
+6.
+    AlexNet: Direct connected connect convolutional layers. And local response layer, which will enhance the variety of feature learnt by different maps.
+    GoogLeNet: Inception layers. Use a wide variety of convolutional layers to capture features of different scales. The inception layers also uses a technique of 1x1 kernel to reduce the depth of the inputs before feeding into the more complex 3x3 or 5x5 convolution layer. Allowing faster learning by this bottle neck effect.
+    ResNet: Use Residual layers to make skip connections, which allows the network to go much deeper. Since the layers are skip connected. Each residual unit is forced to learn the feature function
+    f(x) = h(x) - x      (Since X is added. So h(x) has to counter this effect.)
+When the training just started and all kernels are just initialized. The ResNet Structure will make the shallower layer of nodes update while the upper layer is still near zero. Allowing much faster learning. More surprisingly, ResNetwork also solves the problem of gradient degredation, where it seems that sometimes when using deeper network, the function seems too hard to map, and the network performs worse than even shallower network.
